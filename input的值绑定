@@ -1,0 +1,28 @@
+一组多选框，绑定的值必须一样，并且绑定的值是一个数组
+<input type="checkbox" id="football" value="足球" v-model="message">
+<label for="football">足球</label>
+<input type="checkbox" id="basketball" value="篮球" v-model="message">
+<label for="basketball">篮球</label>
+<input type="checkbox" id="pingpong" value="乒乓球" v-model="message">
+<label for="pingpong">乒乓球</label>
+<p>message:{{message.join('、')}}</p>
+data () {
+            return {
+                message:[]
+            }
+        },
+        
+
+
+
+<select v-model="selected">
+        <!-- 内联对象字面量 -->
+    <option :value="a2">4</option>
+    <option :value="a">5</option>
+</select>
+      {{selected.name}}
+ data() {
+  selected:'',
+  a: { number: 1, name:"李四"},
+  a2: { number: 2,name:"王五" },
+ }

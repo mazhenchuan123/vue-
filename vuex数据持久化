@@ -1,0 +1,13 @@
+//安装插件
+npm install vuex-persistedstate
+
+//在store文件夹加入
+import createPersistedState from 'vuex-persistedstate'
+const store = new Vuex.Store({
+  modules: {
+    app,
+    user
+  },
+  getters,
+  plugins: [createPersistedState()]  //加上这个就可以了
+})

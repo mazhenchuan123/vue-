@@ -1,0 +1,5 @@
+在页面中使用this.store.dispatch("")来调用actions方法
+actions中只能调用mutations的方法，不能直接改变值
+getters:数据往外传递之前可以进行预处理，相当于组件中的computed计算属性
+mutations：当逐渐需要修改共享状态时，这里是唯一的同步修改store的地方
+actions:组件中触发这里的方法，以commit的方式触发，提交到mutations中，这里是异步操作

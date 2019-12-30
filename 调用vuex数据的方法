@@ -1,0 +1,13 @@
+import { mapState } from 'vuex'//引入
+在compoted使用mapState
+
+
+computed : {
+			...mapState(['data']),
+      //引入子属性的属性
+			...mapState('login', ['name','price']),
+      //如果两个子属性的属性名相同，使用下面这种方法起别名
+			...mapState('home', {
+				names: state => state.name
+			})
+		},

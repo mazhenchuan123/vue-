@@ -1,0 +1,81 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+import post from '@/utils/request'
+import api from '@/services/api'
+Vue.use(Vuex)
+
+const home = {
+  namespaced: true,
+  state: {
+    name: '小明',
+  },
+  mutations: {
+    HOME (state, action) {
+      state.name = action
+      console.log(1,'----home')
+    }
+  },
+  actions: {
+    ON_HOME (context, action) {
+      console.log(action,3)
+      context.commit('HOME', action)
+    }
+  }
+}
+const login = {
+  namespaced: true,
+  state: {
+    name: '小明',
+    price:'',
+  },
+  mutations: {
+    HOME (state, action) {
+      state.name = action
+      console.log(1,'----小红')
+    },
+    PRICE (state,action) {
+      state.price = action
+    }
+  },
+  actions: {
+  }
+}
+const store =  new Vuex.Store({
+  state: {
+    count:0,
+    data:[]
+  },
+  mutations: {
+    HOME () {
+      console.log('公共的home')
+    },
+    increment (state,payload) {
+      state.count++
+      state.num = payload.num
+    },
+    inCount (state) {
+      state.count =0
+    },
+    setData (state, action) {
+      state.data = action
+    }
+  },
+  actions: {
+    list (context) {
+      post(api.list)
+        .then(res =>{
+          context.commit('setData',res.data.result.list)
+        })
+    },
+      
+  },
+  modules: {
+    home,
+    login
+  }
+})
+store.commit('home/HOME')
+store.dispatch('home/ON_HOME')
+store.commit('HOME')
+store.commit('login/HOME','小红')
+export default store

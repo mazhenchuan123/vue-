@@ -1,0 +1,6 @@
+@input绑定事件，：value绑定值
+<input :value="price" @input="update" />
+调用vuex的方法进行修改
+update (evt) {
+				this.$store.commit('login/PRICE', evt.target.value)
+			},

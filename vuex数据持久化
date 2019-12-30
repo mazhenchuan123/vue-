@@ -9,5 +9,18 @@ const store = new Vuex.Store({
     user
   },
   getters,
-  plugins: [createPersistedState()]  //加上这个就可以了
+  //加上这个就可以了
+  plugins: [createPersistedState({
+    //自定义key的名字
+    key: 'asdafwe132',
+    //如果不存入localStorage，而存入sessionStorage的话
+    storage: window.sessionStorage,
+    //判断具体都存哪些值
+    reducer (options) {
+      return {
+        //存入login的值
+        login: options.login
+      }
+    }
+  })]  
 })
